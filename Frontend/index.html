@@ -99,8 +99,7 @@
 						<option value="grade12">Grade 12</option>
 					</select>
 					<button
-						class="bg-blue-500 text-white font-bold rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline px-4 py-2"
-						>Submit</button>
+						class="bg-blue-500 text-white font-bold rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline px-4 py-2">Submit</button>
 				</form>
 			</div>
 
@@ -109,20 +108,20 @@
 				<h1 class="text-2xl font-bold text-center mb-6">Student Payment Information</h1>
 				<form class="flex flex-row space-x-4 items-start">
 					<label for="student-name" class="text-sm font-medium text-gray-700">Student Name:</label>
-					<input type="text" id="student-name"
+					<input type="text" id="search-student-name"
 						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 						required>
 					<label for="phone-number" class="text-sm font-medium text-gray-700">Phone Number:</label>
-					<input type="tel" id="phone-number"
+					<input type="tel" id="search-phone-number"
 						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 						required>
 
 
-					<button
-						class="bg-blue-500 text-white font-bold rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline px-4 py-2">Search</button>
+					<button id="search-btn"
+						class="bg-blue-500 text-white font-bold rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline px-4 py-2" >Search</button>
 				</form>
 				<br>
-				<table class="table w-full rounded-md shadow-md">
+				<table class="table w-full border rounded-md shadow-md">
 					<thead>
 						<tr class="bg-gray-200 text-gray-700 font-bold text-sm uppercase">
 							<th class="px-4 py-2">Student Name</th>
@@ -147,6 +146,11 @@
 	</div>
 
 	<script>
+		// document.addEventListener('DOMContentLoaded', function () {
+		// 		// This function will run after the HTML has fully loaded
+		// 		// Your JavaScript code goes here
+		// 		console.log('HTML Loaded!');
+
 		// Function to handle the form submission and make a fetch request
 		const handleSubmit = async () => {
 			// Assuming you have an API endpoint to submit the form data
@@ -194,6 +198,79 @@
 			event.preventDefault(); // Prevent the default form submission
 			handleSubmit(); // Call the custom submit function
 		});
+
+	// Function to handle the search submission and make a fetch request
+		const handleSearch = async () => {
+			 console.log('Entering handleSearch');
+			// Assuming you have an API endpoint to search for student payment information
+			const apiUrl = 'http://127.0.0.1:8000/api/search_payment';
+
+			// Get search form values
+			const studentName = document.getElementById('search-student-name').value;
+			const phoneNumber = document.getElementById('search-phone-number').value;
+
+			// Prepare the data object
+			const searchData = {
+				student_name: studentName,
+				phone_number: phoneNumber,
+			};
+
+			// Make a fetch request
+			try {
+				console.log('Before fetch request');
+				const response = await fetch(apiUrl, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(searchData),
+				});
+
+				if (!response.ok) {
+					throw new Error(`HTTP error! Status: ${response.status}`);
+				}
+
+				const responseData = await response.json();
+
+				// Handle the retrieved data (update UI, display results, etc.)
+				console.log('Search result:', responseData);
+				updateTable(responseData);
+			} catch (error) {
+				console.error('Error searching payment:', error.message);
+			}
+		};
+
+
+		// Add an event listener to the search button
+		document.getElementById('search-btn').addEventListener('click', (event) => {
+			event.preventDefault();
+			console.log('Search button clicked');
+			handleSearch(); // Call the custom search function
+
+		});
+
+
+		const updateTable = (searchResult) => {
+				const tableBody = document.querySelector('.table tbody');
+
+				// Clear existing table rows
+				tableBody.innerHTML = '';
+
+				// Create a new row for each search result
+				const newRow = document.createElement('tr');
+				newRow.innerHTML = `
+        <td class="px-4 py-2 border box-border text-center">${searchResult.student_name}</td>
+            <td class="px-4 py-2 border box-border text-center">${searchResult.payment_date}</td>
+            <td class="px-4 py-2 border box-border text-center">${searchResult.amount_paid}</td>
+            <td class="px-4 py-2 border box-border text-center">${searchResult.student_class}</td>
+            <td class="px-4 py-2 border box-border text-center">${searchResult.phone_number}</td>
+    `;
+
+				// Append the new row to the table body
+				tableBody.appendChild(newRow);
+			};
+
+	//});
 	</script>
 </body>
 
