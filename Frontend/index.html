@@ -51,10 +51,10 @@
 								d="M3.293 9.293a1 1 0 011.414 0L10 14.586l5.293-5.293a1 1 0 111.414 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414z">
 							</path>
 						</svg>
-						<span>Messages</span>
+						<span><a href="New-Student.html">Create New Student Information</a></span>
 					</a>
 				</li>
-				<li class="hover:bg-gray-700 p-2 rounded">
+				<!-- <li class="hover:bg-gray-700 p-2 rounded">
 					<a href="#" class="flex items-center space-x-2">
 						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd"
@@ -63,14 +63,14 @@
 						</svg>
 						<span>Settings</span>
 					</a>
-				</li>
+				</li> -->
 			</ul>
 		</aside>
 
 		<!-- Main Content Area -->
 		<main class="flex-1 p-4 space-y-8">
 			<!-- Student Information -->
-			<div class="bg-white p-6 rounded-md shadow-md">
+			<!-- <div class="bg-white p-6 rounded-md shadow-md">
 				<h1 class="text-2xl font-bold text-center mb-6">Enter Student Information</h1>
 				<form class="flex flex-row space-x-4 items-start">
 					<label for="student-name" class="text-sm font-medium text-gray-700">Student Name:</label>
@@ -101,7 +101,7 @@
 					<button
 						class="bg-blue-500 text-white font-bold rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline px-4 py-2">Submit</button>
 				</form>
-			</div>
+			</div> -->
 
 			<!-- Student Payment Information -->
 			<div class="bg-white p-6 rounded-md shadow-md">
@@ -133,11 +133,11 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="px-4 py-2">John Doe</td>
-							<td class="px-4 py-2">2023-12-04</td>
-							<td class="px-4 py-2">$100.00</td>
-							<td class="px-4 py-2">Grade 10</td>
-							<td class="px-4 py-2">123-456-7890</td>
+							<td class="px-4 py-2 border box-border text-center">John Doe</td>
+							<td class="px-4 py-2 border box-border text-center">2023-12-04</td>
+							<td class="px-4 py-2 border box-border text-center">$100.00</td>
+							<td class="px-4 py-2 border box-border text-center">Grade 10</td>
+							<td class="px-4 py-2 border box-border text-center">123-456-7890</td>
 						</tr>
 					</tbody>
 				</table>
@@ -146,12 +146,7 @@
 	</div>
 
 	<script>
-		// document.addEventListener('DOMContentLoaded', function () {
-		// 		// This function will run after the HTML has fully loaded
-		// 		// Your JavaScript code goes here
-		// 		console.log('HTML Loaded!');
 
-		// Function to handle the form submission and make a fetch request
 		const handleSubmit = async () => {
 			// Assuming you have an API endpoint to submit the form data
 			const apiUrl = 'http://127.0.0.1:8000/api/submit';
