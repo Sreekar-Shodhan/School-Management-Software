@@ -9,45 +9,103 @@
 	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
-	<div class="bg-white p-6 rounded-md shadow-md">
-		<h1 class="text-2xl font-bold text-center mb-6">Enter Student Information</h1>
-		<form class="flex flex-row space-x-4 items-start">
-			<label for="student-name" class="text-sm font-medium text-gray-700">Student Name:</label>
-			<input type="text" id="student-name"
-				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-				required>
+<body class="font-sans bg-gray-100 h-screen">
 
-			<label for="phone-number" class="text-sm font-medium text-gray-700">Phone Number:</label>
-			<input type="tel" id="phone-number"
-				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-				required>
+	<div class="flex h-full">
+		<!-- Sidebar -->
+		<aside class="bg-gray-800 text-white w-64 p-4 flex flex-col">
+			<ul class="space-y-2 flex-grow">
+				<li class="hover:bg-gray-700 p-2 rounded">
+					<a href="#" class="flex items-center space-x-2">
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+							<path fill-rule="evenodd"
+								d="M2 3a1 1 0 011-1h1a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1zm16 0a1 1 0 011 1v12a1 1 0 01-1 1h-1a1 1 0 01-1-1V4a1 1 0 011-1h1z"
+								clip-rule="evenodd"></path>
+						</svg>
+						<span><a href="index.html">Dashboard</a></span>
+					</a>
+				</li>
+				<!-- <li class="hover:bg-gray-700 p-2 rounded">
+					<a href="#" class="flex items-center space-x-2">
+						<!-- <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M6 3a1 1 0 100-2 1 1 0 000 2zM4 3a1 1 0 100-2 1 1 0 000 2zM16 3a1 1 0 100-2 1 1 0 000 2zM14 3a1 1 0 100-2 1 1 0 000 2zM10 3a1 1 0 100-2 1 1 0 000 2z">
+								</path>
+								<path
+									d="M3.293 9.293a1 1 0 011.414 0L10 14.586l5.293-5.293a1 1 0 111.414 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414z">
+								</path>
+							</svg> -->
+						<!-- <span><a href="New-Student.html">Create New Student Information</a></span>
+					</a>
+				</li> -->
+				<!-- <li class="hover:bg-gray-700 p-2 rounded">
+						<a href="#" class="flex items-center space-x-2">
+							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd"
+									d="M2 3a1 1 0 011-1h14a1 1 0 110 2H3a1 1 0 01-1-1zm1 5a1 1 0 100 2h14a1 1 0 100-2H3zm-1 4a1 1 0 011-1h14a1 1 0 110 2H3a1 1 0 01-1-1zm1 5a1 1 0 100 2h14a1 1 0 100-2H3z"
+									clip-rule="evenodd"></path>
+							</svg>
+							<span>Settings</span>
+						</a>
+					</li> -->
+			</ul>
+		</aside>
+	   <div class="bg-white p-6 rounded-md shadow-md">
+		   <h1 class="text-2xl font-bold text-center mb-6">Enter Student Information</h1>
+		   <form class="flex flex-row space-x-4 items-start">
+			<div class="flex flex-wrap -mx-3 mb-6">
+				<div class="w-full sm:w-1/2 md:w-1/3 px-3 mb-6 md:mb-0">
+					<label for="student-name" class="text-sm font-medium text-gray-700">Student Name:</label>
+					<input type="text" id="student-name"
+						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						required>
+				</div>
 
-			<label for="amount-paid" class="text-sm font-medium text-gray-700">Amount Paid:</label>
-			<input type="text" id="amount-paid"
-				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-				required>
+				<div class="w-full sm:w-1/2 md:w-1/3 px-3 mb-6 md:mb-0">
+					<label for="parent-name" class="text-sm font-medium text-gray-700">Parent Name:</label>
+					<input type="text" id="parent-name"
+						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						required>
+				</div>
 
-			<label for="payment-date" class="text-sm font-medium text-gray-700">Date of Payment:</label>
-			<input type="date" id="payment-date"
-				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-				required>
+				<div class="w-full sm:w-1/2 md:w-1/3 px-3">
+					<label for="phone-number" class="text-sm font-medium text-gray-700">Phone Number:</label>
+					<input type="tel" id="phone-number"
+						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						required>
+				</div>
+			</div>
 
-			<label for="student-class" class="text-sm font-medium text-gray-700">Class:</label>
-			<select id="student-class"
-				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-				required>
-				<option value="" disabled selected>Select Class</option>
-				<option value="grade10">Grade 10</option>
-				<option value="grade11">Grade 11</option>
-				<option value="grade12">Grade 12</option>
-			</select>
+			<div class="flex flex-wrap -mx-3 mb-6">
+				<div class="w-full sm:w-1/2 md:w-1/3 px-3 mb-6 md:mb-0">
+					<label for="amount-paid" class="text-sm font-medium text-gray-700">Amount Paid:</label>
+					<input type="text" id="amount-paid"
+						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						required>
+				</div>
+
+				<div class="w-full sm:w-1/2 md:w-1/3 px-3 mb-6 md:mb-0">
+					<label for="payment-date" class="text-sm font-medium text-gray-700">Date of Payment:</label>
+					<input type="date" id="payment-date"
+						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						required>
+				</div>
+
+				<div class="w-full sm:w-1/2 md:w-1/3 px-3">
+					<label for="roll-number" class="text-sm font-medium text-gray-700">Roll Number:</label>
+					<input type="text" id="roll-number"
+						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						required>
+				</div>
+			</div>
+
 
 			<button
 				class="bg-blue-500 text-white font-bold rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline px-4 py-2">Submit</button>
-		</form>
+		 </form>
+	   </div>
 	</div>
 </body>
 
 </html>
-
